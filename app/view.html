@@ -1,0 +1,29 @@
+<html ng-app="twtApp">
+	<head>
+		<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script src="../twtApp.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../app.css">
+		</head>
+		<body>
+			<div ng-controller="viewController" class="well">
+			<div class="bg-success">
+				<a href="{{ twt.user.url }}" target="_blank"><img src="{{twt.user.profile_image_url}}" alt="{{twt.user.name}}" /></a>
+				<span>@{{ twt.user.screen_name }}</span>
+				<span>{{ parseDate(twt.created_at)| date:'medium' }}</span>
+				</div>
+				<div ng-bind-html="decode(twt)">
+					
+				</div>
+				<div ng-repeat="media in twt.extended_entities.media">
+					<img src="{{media.media_url}}" style="width:{{media.sizes.large.w}};height:{{media.sizes.large.h}};" />
+				</div>
+				<div class="twt-space">
+				<button ng-click="retweet()" ng-show="!twt.retweeted"  type="button" class="btn btn-success">Retweet</button>
+				<span ng-show="twt.retweeted == true">Retweeted</span>
+				</div>
+			</div>
+		</body>
+	</html>

@@ -1,0 +1,12 @@
+{
+  "name": "twApp",
+  "version": "0.0.0",
+  "description": "test app",
+  "main": "server.js",
+  "author": "val",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "twitter-js-client": "^0.0.5"
+  }
+}
